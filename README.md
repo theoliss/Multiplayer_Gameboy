@@ -22,3 +22,39 @@ So the only solution is to fight back ! With your four spells, you must act quic
 In practise, the two gameboys are linked, and whatever a player send throught his portal comes out of the other player's. 
 So the purpuse is to act faster that the person you fight against. 
 
+## The code 
+
+For this project, all the software part is condenced in just one arduino script (which can therefore look a bit long). All the sprites are encoded directly in the script, just like every sentences the message box could show, or the animations the sprites can make. 
+
+This code requires many library. Knowing that some of them are not in the basic arduino's library list, you will have to install 
+
+```c:
+<Adafruit_SSD1306.h>
+<Keypad.h>
+<esp_now.h>
+````
+And all their dependencies. 
+
+## The upgrades we still have to make 
+
+Even if we consider that this project is quite succesful compare to what we have been asked. Due to the like of time during it realisation, we still have some upgrades to do. 
+
+For instance, the WIFI MAC adresses the gameboy use to connect to each other are hardcoded, which impacts the reproductabily of this project. 
+
+We also would have liked to had more animation for the win and lose screen. 
+
+## If you want to make this project 
+
+If you want to reproduce this project in its entirety. You will have to :
+
+-Get two ESP32 chips with a I2C OLED screen and a matrix of button linked to it. (we personaly used an ESP32-C3)
+
+-Print the casing for the ESP (the 3d models are available in the github files) 
+
+-Upload the code in both ESP32 (in this current version of the code, you will have to know the MAC adress of each ESP32 and replace this line (n°450) with the right ones) : 
+
+```c
+uint8_t broadcastAddress[] = {0x58, 0xCF, 0x79, 0x06, 0x30, 0x9C};
+```
+
+-Enjoy and have Fun playing Wizard Fight !
